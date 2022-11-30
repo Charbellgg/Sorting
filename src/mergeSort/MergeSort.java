@@ -1,23 +1,25 @@
 package mergeSort;
 
+import java.util.ArrayList;
 
 public class MergeSort {
 
-	public <T extends Comparable<T>> void merge(T[] a, T[] l, T[] r, int left, int right) {
+	public <E extends Comparable<E>> void merge(ArrayList<E> data, ArrayList<E> left, ArrayList<E> right, int start, int end) {
 
-		int i = 0, j = 0, k = 0;
-		while (i < left && j < right) {
-			if (l[i] != null && r[j] != null && l[i].compareTo(r[j]) <= 0) {
-				a[k++] = l[i++];
+		int i = 0, j = 0;
+		while (i < start && j < end) {
+			if (left.get(i) != null && right.get(j) != null && left.get(i).compareTo(right.get(j)) <= 0) {
+				data.add(left.get(i++));
 			} else {
-				a[k++] = r[j++];
+				data.add(right.get(j++));
 			}
 		}
-		while (i < left) {
-			a[k++] = l[i++];
+		while (i < start) {
+			data.add(left.get(i++));
 		}
-		while (j < right) {
-			a[k++] = r[j++];
+		while (j < end) {
+			data.add(right.get(j++));
 		}
 	}
+	
 }
