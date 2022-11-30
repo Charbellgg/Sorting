@@ -22,4 +22,27 @@ public class MergeSort {
 		}
 	}
 	
+	public <E extends Comparable<E>> void mergeSort(ArrayList<E> data, int n) {
+		
+		if (n < 2) {
+			return;
+		}
+		
+		int mid = n / 2;
+		ArrayList<E> left = new ArrayList<E>();
+		ArrayList<E> right = new ArrayList<E>();
+
+		for (int i = 0; i < mid; i++) {
+			left.add(i, data.get(i));
+		}
+		for (int i = mid; i < n; i++) {
+			right.add(i - mid, data.get(i));
+		}
+		mergeSort(left, mid);
+		mergeSort(right, n - mid);
+
+		merge(data, left, right, mid, n - mid);
+	}
+
+	
 }
